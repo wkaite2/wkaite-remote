@@ -13,7 +13,7 @@
 | Windows 10/11 x64 | 便携自解压 | `rustdesk-1.5.1-x86_64.exe` |
 | Windows ARM64 | 推荐安装 | `rustdesk-1.5.1-aarch64.msi` |
 | Windows ARM64 | 便携自解压 | `rustdesk-1.5.1-aarch64.exe` |
-| Ubuntu 22.04 x64 | 推荐离线 DEB，含键鼠依赖 | `WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb` |
+| Ubuntu 22.04 x64 | 推荐离线 DEB，含键鼠依赖 | `WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb` |
 | Ubuntu/Debian x64 | 标准 DEB | `rustdesk-1.5.1-x86_64.deb` |
 | Ubuntu/Debian arm64 | DEB 安装 | `rustdesk-1.5.1-aarch64.deb` |
 | Linux x64 | 免安装 AppImage | `rustdesk-1.5.1-x86_64.AppImage` |
@@ -30,7 +30,7 @@
 使用 `apt` 安装，以自动解析系统依赖：
 
 ```bash
-sudo apt install -y ./WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb
+sudo apt install -y ./WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
 ```
 
 离线 DEB 已包含 `libxdo.so.3`，无需访问 Ubuntu 软件源。
@@ -94,20 +94,20 @@ GitHub CDN 无法访问时，可从 RustDesk 服务器通过 SSH 下载：
 
 ```bash
 cd ~/下载
-scp root@220.154.11.66:/opt/rustdesk-selfhost/downloads/WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb .
-sha256sum WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb
+scp root@220.154.11.66:/opt/rustdesk-selfhost/downloads/WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb .
+sha256sum WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
 ```
 
 SHA256：
 
 ```text
-7834c3c66566f3111993fa2490aeae811502fdc60656e77f47815ddf38ea4971
+61fdccc1a82f27930744516f215cd1dd7ab728e40463dab00056b66777303876
 ```
 
 安装：
 
 ```bash
-sudo dpkg -i WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb
+sudo dpkg -i WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
 sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
 sudo update-desktop-database /usr/share/applications 2>/dev/null || true
 ```
