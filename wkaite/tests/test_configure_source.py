@@ -74,8 +74,8 @@ class ConfigureSourceTests(unittest.TestCase):
             "flutter/android/app/build.gradle": 'applicationId "com.carriez.flutter_hbb"\n',
             "flutter/macos/Runner/Configs/AppInfo.xcconfig": 'PRODUCT_BUNDLE_IDENTIFIER = com.carriez.flutterHbb\n',
             "flutter/windows/runner/Runner.rc": 'VALUE "ProductName", "RustDesk" "\\0"\n',
-            "res/rustdesk.desktop": 'Name=RustDesk\n',
-            "res/rustdesk-link.desktop": 'Name=RustDesk\n',
+            "res/rustdesk.desktop": 'Name=RustDesk\nIcon=rustdesk\n',
+            "res/rustdesk-link.desktop": 'Name=RustDesk\nIcon=rustdesk\n',
         }
         for relative, content in files.items():
             path = self.root / relative
@@ -102,13 +102,17 @@ class ConfigureSourceTests(unittest.TestCase):
             'VALUE "ProductName", "WKAite Remote"',
             (self.root / "flutter/windows/runner/Runner.rc").read_text(),
         )
+        desktop = (self.root / "res/rustdesk.desktop").read_text()
+        link_desktop = (self.root / "res/rustdesk-link.desktop").read_text()
+        self.assertIn('Name=WKAite Remote', desktop)
+        self.assertIn('Name=WKAite Remote', link_desktop)
         self.assertIn(
-            'Name=WKAite Remote',
-            (self.root / "res/rustdesk.desktop").read_text(),
+            'Icon=/usr/share/icons/hicolor/256x256/apps/rustdesk.png',
+            desktop,
         )
         self.assertIn(
-            'Name=WKAite Remote',
-            (self.root / "res/rustdesk-link.desktop").read_text(),
+            'Icon=/usr/share/icons/hicolor/256x256/apps/rustdesk.png',
+            link_desktop,
         )
 
     def test_rejects_server_url_with_scheme(self):

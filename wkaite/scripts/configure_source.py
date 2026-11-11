@@ -151,6 +151,16 @@ def configure_source(profile: dict[str, Any], root: Path) -> None:
         ),
         ("res/rustdesk.desktop", "Name=RustDesk", f'Name={profile["product_name"]}'),
         ("res/rustdesk-link.desktop", "Name=RustDesk", f'Name={profile["product_name"]}'),
+        (
+            "res/rustdesk.desktop",
+            "Icon=rustdesk",
+            "Icon=/usr/share/icons/hicolor/256x256/apps/rustdesk.png",
+        ),
+        (
+            "res/rustdesk-link.desktop",
+            "Icon=rustdesk",
+            "Icon=/usr/share/icons/hicolor/256x256/apps/rustdesk.png",
+        ),
     )
     for relative, old, new in replacements:
         path = root / relative

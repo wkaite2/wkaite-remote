@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import io
 import struct
 from pathlib import Path
@@ -68,6 +69,19 @@ def png_bytes(image: Image.Image, size: int) -> bytes:
     return buffer.getvalue()
 
 
+def write_embedded_svg(image: Image.Image, path: Path) -> None:
+    encoded = base64.b64encode(png_bytes(image, 512)).decode("ascii")
+    svg = (
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" '
+        'viewBox="0 0 1024 1024">\n'
+        f'  <image width="1024" height="1024" preserveAspectRatio="xMidYMid meet" '
+        f'href="data:image/png;base64,{encoded}" />\n'
+        '</svg>\n'
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(svg, encoding="utf-8")
+
+
 def write_icns(image: Image.Image, path: Path) -> None:
     chunks = b"".join(tag + struct.pack(">I", len(data) + 8) + data
                       for tag, size in ICNS_CHUNKS
@@ -92,6 +106,8 @@ def build_assets(source: Path, root: Path, site_dir: Path) -> None:
     write_ico(image, res / "icon.ico", ICO_SIZES)
     write_ico(image, res / "tray-icon.ico", TRAY_SIZES)
     write_ico(image, root / "flutter/windows/runner/resources/app_icon.ico", ICO_SIZES)
+    write_embedded_svg(image, res / "scalable.svg")
+    write_embedded_svg(image, root / "flutter/assets/icon.svg")
 
     write_png(image, root / "flutter/assets/icon.png", 512)
     write_png(image, root / "flutter/assets/logo.png", 512)
