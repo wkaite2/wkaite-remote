@@ -74,3 +74,14 @@ ID/中继服务器: 220.154.11.66
 Android 上传签名密钥保存在本机 `client-builder/secrets/`，不可删除；否则后续版本无法覆盖升级。
 
 Windows 当前未使用商业 Authenticode 证书，SmartScreen 可能显示未知发布者。macOS 当前为未公证 DMG，首次打开可能需要在“系统设置 -> 隐私与安全性”允许。完成证书配置后可消除对应系统提示，不需要修改客户端功能代码。
+
+## 已安装主机
+
+当前 Ubuntu 主机已通过用户级安装脚本部署：
+
+- 程序：`~/.local/opt/wkaite-remote`
+- 启动器：`~/.local/bin/wkaite-remote`
+- 桌面入口：`~/桌面/WKAite Remote.desktop`
+- 登录自动启动：`~/.config/autostart/wkaite-remote.desktop`
+- 当前设备 ID：`78265331`
+- 信令服务器：`220.154.11.66:21116`
