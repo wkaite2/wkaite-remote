@@ -1,0 +1,13 @@
+name: CI call
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  call:
+    uses: ./.github/workflows/flutter-build.yml
+    with:
+      upload-artifact: true
+      upload-tag: ci-call
+      publish-update-metadata: false
+    secrets: inherit
