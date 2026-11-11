@@ -20,6 +20,7 @@
 | macOS Intel | DMG 安装 | `rustdesk-1.5.1-x86_64.dmg` |
 | macOS Apple Silicon | DMG 安装 | `rustdesk-1.5.1-aarch64.dmg` |
 | Android arm64 | 推荐 | `rustdesk-1.5.1-aarch64.apk` |
+| Android armv7 | 32 位 ARM 设备 | `rustdesk-1.5.1-armv7.apk` |
 | Android x86_64 | 模拟器/平板 | `rustdesk-1.5.1-x86_64.apk` |
 | Android 通用 | 不确定架构时 | `rustdesk-1.5.1-universal.apk` |
 
