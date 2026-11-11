@@ -1,9 +1,9 @@
-# WKAite Remote 1.5.1 正式发布
+# WKAite Remote 1.5.1.2 正式发布
 
 - 下载页：https://wkaite.github.io/wkaite-remote/
-- 发布页：https://github.com/wkaite/wkaite-remote/releases/tag/wkaite-v1.5.1.1
-- SHA256：https://github.com/wkaite/wkaite-remote/releases/download/wkaite-v1.5.1.1/SHA256SUMS
-- 源码：https://github.com/wkaite/wkaite-remote/tree/wkaite-v1.5.1.1
+- 发布页：https://github.com/wkaite/wkaite-remote/releases/tag/wkaite-v1.5.1.2
+- SHA256：https://github.com/wkaite/wkaite-remote/releases/download/wkaite-v1.5.1.2/SHA256SUMS
+- 源码：https://github.com/wkaite/wkaite-remote/tree/wkaite-v1.5.1.2
 
 ## 安装包
 
@@ -24,6 +24,30 @@
 | Android x86_64 | 模拟器/平板 | `rustdesk-1.5.1-x86_64.apk` |
 | Android 通用 | 不确定架构时 | `rustdesk-1.5.1-universal.apk` |
 
+## Ubuntu 安装
+
+使用 `apt` 安装，以自动解析系统依赖：
+
+```bash
+sudo apt update
+sudo apt install -y ./rustdesk-1.5.1-x86_64.deb
+```
+
+若之前使用 `dpkg -i` 遇到 `libxdo3` 错误，执行：
+
+```bash
+sudo apt --fix-broken install -y
+```
+
+Ubuntu 22.04 的 `libxdo3` 位于 Universe 仓库。若 `apt update` 提示 `cn.archive.ubuntu.com` 无法连接，切换清华镜像后重试：
+
+```bash
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo sed -i -E 's#https?://(cn\.)?archive\.ubuntu\.com/ubuntu/?#https://mirrors.tuna.tsinghua.edu.cn/ubuntu/#g' /etc/apt/sources.list
+sudo apt update
+sudo apt --fix-broken install -y
+```
+
 ## 已锁定配置
 
 ```text
@@ -41,6 +65,8 @@ ID/中继服务器: 220.154.11.66
 - GitHub Actions 四平台构建全部成功。
 - Release 为公开正式版，19 个资产，无草稿或预发布标记。
 - Windows MSI、Ubuntu DEB、macOS DMG、Android APK 已重新下载并通过 SHA256 比对。
+- 已使用用户提供的封面图替换 Windows/macOS/Linux/Android 图标与下载页头图。
+- 当前 Ubuntu 主机已安装该版本，桌面入口和登录自动启动已建立，客户端 ID 为 `78265331`。
 - Ubuntu 成品运行时写入 `rendezvous_server = '220.154.11.66:21116'`，Key 已验证。
 - Android APK 中确认存在 `WKAite Remote`、`com.wkaite.remote`、服务器地址和公钥。
 - Android APK 使用固定发布密钥签名。

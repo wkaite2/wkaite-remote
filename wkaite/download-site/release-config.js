@@ -1,7 +1,7 @@
 window.WKAITE_RELEASE = {
   version: "1.5.1",
-  tag: "wkaite-v1.5.1.1",
-  baseUrl: "https://github.com/wkaite/wkaite-remote/releases/download/wkaite-v1.5.1.1",
+  tag: "wkaite-v1.5.1.2",
+  baseUrl: "https://github.com/wkaite/wkaite-remote/releases/download/wkaite-v1.5.1.2",
   assets: {
     windowsMsi: "rustdesk-1.5.1-x86_64.msi",
     windowsExe: "rustdesk-1.5.1-x86_64.exe",
