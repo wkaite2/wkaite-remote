@@ -1,0 +1,9 @@
+{
+  "product_name": "WKAite Remote",
+  "package_id": "com.wkaite.remote",
+  "upstream_version": "1.5.1",
+  "upstream_commit": "23e5bb471a040d62f0a6ad52591fb30784265b73",
+  "server_host": "220.154.11.66",
+  "relay_host": "220.154.11.66",
+  "key": "Bs0Kogt1I6aQfDvZFyqu3ZF7ZdRDW0evNRGO0DPX3hQ="
+}

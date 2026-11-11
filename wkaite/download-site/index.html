@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WKAite Remote 自建服务器客户端下载">
+  <title>WKAite Remote 下载</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="eyebrow">WKAITE REMOTE · 1.5.1</div>
+    <h1>安装后直接连接，<br>无需填写服务器配置。</h1>
+    <p>远程桌面、键盘鼠标、剪贴板与文件传输。所有设备统一接入自建服务器，自动更新保持关闭。</p>
+    <div class="server">服务器 <strong>220.154.11.66</strong></div>
+  </header>
+
+  <main>
+    <section class="grid" aria-label="下载平台">
+      <article class="card">
+        <div class="platform">Windows</div>
+        <h2>Windows 10/11</h2>
+        <p>推荐使用 MSI 安装包；EXE 为便携自解压版本。</p>
+        <a class="primary" data-asset="windowsMsi">下载 MSI（x64）</a>
+        <a data-asset="windowsExe">便携 EXE（x64）</a>
+      </article>
+
+      <article class="card">
+        <div class="platform">Ubuntu / Debian</div>
+        <h2>Linux 桌面</h2>
+        <p>支持 Ubuntu、Debian 及兼容发行版。</p>
+        <a class="primary" data-asset="ubuntuDeb">下载 DEB（x64）</a>
+        <a data-asset="ubuntuArmDeb">DEB（arm64）</a>
+        <a data-asset="appImage">AppImage（x64）</a>
+      </article>
+
+      <article class="card">
+        <div class="platform">macOS</div>
+        <h2>Mac 桌面</h2>
+        <p>按芯片选择安装包，安装后授予屏幕录制和辅助功能权限。</p>
+        <a class="primary" data-asset="macArm">Apple Silicon</a>
+        <a data-asset="macIntel">Intel</a>
+      </article>
+
+      <article class="card">
+        <div class="platform">Android</div>
+        <h2>手机和平板</h2>
+        <p>按设备架构选择 APK。被控端还需要授予屏幕录制与无障碍权限。</p>
+        <a class="primary" data-asset="androidArm">下载 APK（arm64）</a>
+        <a data-asset="androidX64">APK（x86_64）</a>
+      </article>
+    </section>
+
+    <section class="details">
+      <h2>安装说明</h2>
+      <ol>
+        <li>下载并安装与设备系统对应的 WKAite Remote。</li>
+        <li>打开客户端，确认设备已经在线并显示唯一 ID。</li>
+        <li>被控端设置固定密码，并在控制端输入该 ID。</li>
+        <li>连接后即可使用远程桌面、键鼠控制和文件传输。</li>
+      </ol>
+      <p class="note">Windows 未签名版本可能出现 SmartScreen 提示；macOS 未公证版本可能需要在“隐私与安全性”中允许打开。正式签名材料配置后此提示会消失。</p>
+      <a class="checksum" data-asset="checksums">下载 SHA256SUMS 校验文件</a>
+    </section>
+  </main>
+
+  <footer>WKAite Remote · RustDesk 1.5.1 · 自建服务器客户端</footer>
+  <script src="release-config.js"></script>
+  <script src="download.js"></script>
+</body>
+</html>

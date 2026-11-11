@@ -1,0 +1,71 @@
+name: WKAite Remote release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-tag:
+        description: Public GitHub release tag
+        required: true
+        default: wkaite-v1.5.1.1
+        type: string
+  push:
+    tags:
+      - 'wkaite-v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wkaite-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify locked profile
+        run: python3 wkaite/tests/test_configure_source.py -v
+      - name: Verify committed source profile
+        run: |
+          grep -q 'mod build_profile;' src/lib.rs
+          grep -q 'crate::build_profile::apply();' src/common.rs
+          grep -q 'PRODUCT_NAME: &str = "WKAite Remote"' src/build_profile.rs
+          grep -q 'SERVER_HOST: &str = "220.154.11.66"' src/build_profile.rs
+          grep -q 'OPTION_ALLOW_AUTO_UPDATE.into(), "N".into()' src/build_profile.rs
+          grep -q 'applicationId "com.wkaite.remote"' flutter/android/app/build.gradle
+
+  build:
+    needs: preflight
+    uses: ./.github/workflows/flutter-build.yml
+    permissions:
+      contents: write
+    with:
+      upload-artifact: true
+      upload-tag: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
+      publish-update-metadata: false
+    secrets: inherit
+
+  finalize:
+    needs: build
+    if: ${{ needs.build.result == 'success' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download release assets
+        run: gh release download "${RELEASE_TAG}" --dir release
+      - name: Generate checksums and verify cross-platform contract
+        run: |
+          cd release
+          find . -maxdepth 1 -type f ! -name SHA256SUMS -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS
+          cd ..
+          bash wkaite/scripts/verify_release.sh release
+      - name: Upload checksum manifest
+        run: gh release upload "${RELEASE_TAG}" release/SHA256SUMS --clobber
+      - name: Make release public
+        run: gh release edit "${RELEASE_TAG}" --prerelease=false
