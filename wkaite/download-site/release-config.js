@@ -8,6 +8,7 @@ window.WKAITE_RELEASE = {
     windowsArmMsi: "rustdesk-1.5.1-aarch64.msi",
     windowsArmExe: "rustdesk-1.5.1-aarch64.exe",
     ubuntuDeb: "rustdesk-1.5.1-x86_64.deb",
+    ubuntuOffline: "WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb",
     ubuntuArmDeb: "rustdesk-1.5.1-aarch64.deb",
     appImage: "rustdesk-1.5.1-x86_64.AppImage",
     appImageArm: "rustdesk-1.5.1-aarch64.AppImage",
