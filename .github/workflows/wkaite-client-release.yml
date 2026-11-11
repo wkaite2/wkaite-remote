@@ -42,7 +42,7 @@ jobs:
       contents: write
     with:
       upload-artifact: true
-      upload-tag: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
+      upload-tag: ${{ github.event_name == 'workflow_dispatch' && inputs['release-tag'] || github.ref_name }}
       publish-update-metadata: false
     secrets: inherit
 
@@ -54,7 +54,7 @@ jobs:
       contents: write
     env:
       GH_TOKEN: ${{ github.token }}
-      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.release-tag || github.ref_name }}
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs['release-tag'] || github.ref_name }}
     steps:
       - uses: actions/checkout@v4
       - name: Download release assets
