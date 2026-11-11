@@ -13,7 +13,8 @@
 | Windows 10/11 x64 | 便携自解压 | `rustdesk-1.5.1-x86_64.exe` |
 | Windows ARM64 | 推荐安装 | `rustdesk-1.5.1-aarch64.msi` |
 | Windows ARM64 | 便携自解压 | `rustdesk-1.5.1-aarch64.exe` |
-| Ubuntu/Debian x64 | DEB 安装 | `rustdesk-1.5.1-x86_64.deb` |
+| Ubuntu 22.04 x64 | 推荐离线 DEB，含键鼠依赖 | `WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb` |
+| Ubuntu/Debian x64 | 标准 DEB | `rustdesk-1.5.1-x86_64.deb` |
 | Ubuntu/Debian arm64 | DEB 安装 | `rustdesk-1.5.1-aarch64.deb` |
 | Linux x64 | 免安装 AppImage | `rustdesk-1.5.1-x86_64.AppImage` |
 | Linux arm64 | 免安装 AppImage | `rustdesk-1.5.1-aarch64.AppImage` |
@@ -29,9 +30,10 @@
 使用 `apt` 安装，以自动解析系统依赖：
 
 ```bash
-sudo apt update
-sudo apt install -y ./rustdesk-1.5.1-x86_64.deb
+sudo apt install -y ./WKAite-Remote-1.5.1.2-ubuntu-x86_64-offline.deb
 ```
+
+离线 DEB 已包含 `libxdo.so.3`，无需访问 Ubuntu 软件源。
 
 若之前使用 `dpkg -i` 遇到 `libxdo3` 错误，执行：
 
