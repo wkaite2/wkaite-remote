@@ -59,6 +59,7 @@ class ConfigureSourceTests(unittest.TestCase):
 
         self.assertEqual(lib.count("mod build_profile;"), 1)
         self.assertEqual(common.count("crate::build_profile::apply();"), 1)
+        self.assertIn("use base::config::keys;", profile)
         self.assertIn('PRODUCT_NAME: &str = "WKAite Remote"', profile)
         self.assertIn('SERVER_HOST: &str = "220.154.11.66"', profile)
         self.assertIn('RELAY_HOST: &str = "220.154.11.66"', profile)
