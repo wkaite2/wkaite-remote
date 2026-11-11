@@ -80,7 +80,7 @@ jobs:
           bash wkaite/scripts/verify_release.sh release
       - name: Upload canonical APKs and checksum manifest
         run: |
-          gh release upload "${RELEASE_TAG}" release/*-aarch64.apk release/*-x86_64.apk release/SHA256SUMS --clobber
+          gh release upload "${RELEASE_TAG}" release/*.apk release/SHA256SUMS --clobber
           shopt -s nullglob
           for path in release/*-signed.apk; do
             gh release delete-asset "${RELEASE_TAG}" "$(basename -- "${path}")" --yes
