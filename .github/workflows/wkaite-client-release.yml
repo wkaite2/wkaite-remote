@@ -59,13 +59,31 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download release assets
         run: gh release download "${RELEASE_TAG}" --dir release
+      - name: Require signed Android assets and normalize names
+        shell: bash
+        run: |
+          shopt -s nullglob
+          signed=(release/*-signed.apk)
+          if [[ "${#signed[@]}" -lt 2 ]]; then
+            echo "::error::Signed Android APKs are required. Configure Android signing secrets first."
+            exit 1
+          fi
+          for path in "${signed[@]}"; do
+            canonical="${path/-signed.apk/.apk}"
+            cp "${path}" "${canonical}"
+          done
       - name: Generate checksums and verify cross-platform contract
         run: |
           cd release
-          find . -maxdepth 1 -type f ! -name SHA256SUMS -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS
+          find . -maxdepth 1 -type f ! -name SHA256SUMS ! -name '*-signed.apk' -printf '%f\n' | sort | xargs sha256sum > SHA256SUMS
           cd ..
           bash wkaite/scripts/verify_release.sh release
-      - name: Upload checksum manifest
-        run: gh release upload "${RELEASE_TAG}" release/SHA256SUMS --clobber
+      - name: Upload canonical APKs and checksum manifest
+        run: |
+          gh release upload "${RELEASE_TAG}" release/*-aarch64.apk release/*-x86_64.apk release/SHA256SUMS --clobber
+          shopt -s nullglob
+          for path in release/*-signed.apk; do
+            gh release delete-asset "${RELEASE_TAG}" "$(basename -- "${path}")" --yes
+          done
       - name: Make release public
         run: gh release edit "${RELEASE_TAG}" --prerelease=false
