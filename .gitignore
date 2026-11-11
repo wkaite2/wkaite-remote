@@ -65,3 +65,6 @@ flutter/web/
 wkaite/secrets/
 *.jks
 *.keystore
+
+__pycache__/
+*.pyc
