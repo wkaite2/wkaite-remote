@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify locked profile
-        run: python3 wkaite/tests/test_configure_source.py -v
+        run: python3 -m unittest discover -s wkaite/tests -v
       - name: Verify committed source profile
         run: |
           grep -q 'mod build_profile;' src/lib.rs
