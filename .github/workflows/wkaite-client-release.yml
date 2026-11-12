@@ -6,8 +6,11 @@ on:
       release-tag:
         description: Public GitHub release tag
         required: true
-        default: wkaite-v1.5.1.1
+        default: wkaite-v1.5.1.4
         type: string
+  push:
+    tags:
+      - 'wkaite-v*'
 permissions:
   contents: write
 
