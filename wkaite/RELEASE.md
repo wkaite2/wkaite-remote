@@ -64,6 +64,14 @@ ID/中继服务器: 220.154.11.66
 
 Windows 尚未配置商用 Authenticode 证书，可能出现 SmartScreen 提示；macOS 尚未公证，首次打开可能需要在“系统设置 -> 隐私与安全性”中允许。这不影响安装和连接。
 
+## 最终验证
+
+- GitHub Actions 共 25 个 Job 全部完成，发布工作流结果为 `success`。
+- `wkaite-v1.5.1.4` 为公开正式版，共 21 个资产，官方 `SHA256SUMS` 的 20 个条目全部通过。
+- 自建下载服务器共校验 23 个文件，下载页 20 个链接全部返回 HTTP 200。
+- Android 通用 APK 的签名证书为 `CN=WKAite Remote`，4096 位 RSA，有效期至 2054 年。
+- Ubuntu 离线包为 `1.5.1.4`，APT 依赖模拟只需安装 `rustdesk`，包内 `libxdo.so.3` 和新版封面均已确认。
+
 ## 凭据
 
 Android 发布签名密钥保存在本机 `client-builder/secrets/`，服务器备份位于 `/root/wkaite-secrets/`。该密钥不可删除，否则已安装的 Android 客户端无法覆盖升级。
