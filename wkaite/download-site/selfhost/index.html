@@ -10,18 +10,64 @@
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% 0,#183f31 0,transparent 40rem),linear-gradient(150deg,#07110f,#0a1713 65%,#06100d);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
 main{max-width:1100px;margin:auto;padding:54px 22px 70px}.hero{display:flex;gap:34px;align-items:center}.cover{width:250px;height:250px;border-radius:28px;box-shadow:0 24px 70px #0007}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.14em}.hero h1{margin:10px 0 12px;font-size:clamp(34px,6vw,#54px);line-height:1.03;letter-spacing:-.04em}.hero p{color:var(--muted);line-height:1.7;max-width:650px}.server{display:inline-block;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#0d1e19;color:var(--muted)}.server b{color:var(--text)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px}.card{padding:25px;border:1px solid var(--line);border-radius:21px;background:var(--panel);box-shadow:0 18px 55px #0003}.platform{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.card h2{margin:8px 0 18px;font-size:24px}.links{display:grid;gap:9px}a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:11px;color:var(--text);text-decoration:none;font-weight:650}a.primary{background:var(--accent);border-color:transparent;color:#072419}a:hover{border-color:var(--accent)}.small{color:var(--muted);font-size:13px;line-height:1.6}.install{margin-top:16px;padding:23px;border:1px solid var(--line);border-radius:20px;background:#0c1b17}.code{margin-top:8px;padding:13px;border-radius:10px;background:#07110f;color:#c7e8d9;font:13px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}.note{color:#d8c489}footer{padding-top:28px;color:#6f8b7f;text-align:center;font-size:13px}@media(max-width:720px){.hero{display:block}.cover{width:170px;height:170px;margin-bottom:22px}.grid{grid-template-columns:1fr}}
+.sourcebar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px;padding:15px 18px;border:1px solid var(--line);border-radius:16px;background:#0c1b17}.sourcebar strong{display:block;margin-bottom:3px}.sourcebar .status{color:var(--muted);font-size:13px}.source-buttons{display:flex;gap:8px;flex-wrap:wrap}.source-buttons button{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#10221d;color:var(--text);font:inherit;font-weight:700;cursor:pointer}.source-buttons button:hover{border-color:var(--accent)}.source-buttons button.active{background:var(--accent);border-color:transparent;color:#072419}.source-note{color:var(--muted);font-size:12px;line-height:1.6;margin:10px 0 0}.sourcebar-wrap{margin-top:22px}@media(max-width:720px){.sourcebar{align-items:flex-start;flex-direction:column}.source-buttons{width:100%}.source-buttons button{flex:1}.sourcebar-wrap{margin-top:18px}}
 </style>
 </head>
 <body><main>
 <section class="hero"><img class="cover" src="cover.webp" alt="WKAite Remote"><div><div class="eyebrow">WKAITE REMOTE · 1.5.1.4</div><h1>一套服务器，连接所有设备。</h1><p>预配置远程桌面、键盘鼠标、剪贴板和文件传输。安装后自动连接自建服务器。</p><div class="server">服务器：<b>220.154.11.66</b></div></div></section>
+<section class="sourcebar-wrap"><div class="sourcebar"><div><strong>下载线路</strong><span class="status" id="source-status">正在检测可用线路…</span></div><div class="source-buttons"><button type="button" data-source="cdn" aria-pressed="false">GitHub 高速线路</button><button type="button" data-source="local" aria-pressed="true" class="active">自建服务器备用</button></div></div><p class="source-note">页面会自动检测 GitHub CDN，可使用时切换到高速线路；无法访问时继续使用自建服务器。备用线路速度受服务器上行带宽限制。</p></section>
 <section class="grid">
-<article class="card"><div class="platform">Windows</div><h2>Windows 10/11</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-x86_64.msi" download>下载 MSI（x64）</a><a href="rustdesk-1.5.1-x86_64.exe" download>便携 EXE（x64）</a><a href="rustdesk-1.5.1-aarch64.msi" download>MSI（ARM64）</a><a href="rustdesk-1.5.1-aarch64.exe" download>便携 EXE（ARM64）</a></div></article>
-<article class="card"><div class="platform">Ubuntu / Debian</div><h2>Linux 桌面</h2><div class="links"><a class="primary" href="WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb" download>离线 DEB（x64，推荐）</a><a href="rustdesk-1.5.1-aarch64.deb" download>DEB（arm64）</a><a href="rustdesk-1.5.1-x86_64.AppImage" download>AppImage（x64）</a><a href="rustdesk-1.5.1-aarch64.AppImage" download>AppImage（arm64）</a></div></article>
-<article class="card"><div class="platform">macOS</div><h2>Mac 桌面</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-aarch64.dmg" download>Apple Silicon</a><a href="rustdesk-1.5.1-x86_64.dmg" download>Intel</a></div><p class="small">Apple Silicon 适用于 M1/M2/M3/M4 等芯片；Intel 适用于 Intel 处理器的 Mac。</p></article>
-<article class="card"><div class="platform">Android</div><h2>手机和平板</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-universal.apk" download>通用 APK（推荐）</a><a href="rustdesk-1.5.1-aarch64.apk" download>arm64 APK</a><a href="rustdesk-1.5.1-armv7.apk" download>armv7 APK</a><a href="rustdesk-1.5.1-x86_64.apk" download>x86_64 APK</a></div></article>
+<article class="card"><div class="platform">Windows</div><h2>Windows 10/11</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-x86_64.msi" data-file="rustdesk-1.5.1-x86_64.msi" download>下载 MSI（x64）</a><a href="rustdesk-1.5.1-x86_64.exe" data-file="rustdesk-1.5.1-x86_64.exe" download>便携 EXE（x64）</a><a href="rustdesk-1.5.1-aarch64.msi" data-file="rustdesk-1.5.1-aarch64.msi" download>MSI（ARM64）</a><a href="rustdesk-1.5.1-aarch64.exe" data-file="rustdesk-1.5.1-aarch64.exe" download>便携 EXE（ARM64）</a></div></article>
+<article class="card"><div class="platform">Ubuntu / Debian</div><h2>Linux 桌面</h2><div class="links"><a class="primary" href="WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb" data-file="WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb" download>离线 DEB（x64，推荐）</a><a href="rustdesk-1.5.1-aarch64.deb" data-file="rustdesk-1.5.1-aarch64.deb" download>DEB（arm64）</a><a href="rustdesk-1.5.1-x86_64.AppImage" data-file="rustdesk-1.5.1-x86_64.AppImage" download>AppImage（x64）</a><a href="rustdesk-1.5.1-aarch64.AppImage" data-file="rustdesk-1.5.1-aarch64.AppImage" download>AppImage（arm64）</a></div></article>
+<article class="card"><div class="platform">macOS</div><h2>Mac 桌面</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-aarch64.dmg" data-file="rustdesk-1.5.1-aarch64.dmg" download>Apple Silicon</a><a href="rustdesk-1.5.1-x86_64.dmg" data-file="rustdesk-1.5.1-x86_64.dmg" download>Intel</a></div><p class="small">Apple Silicon 适用于 M1/M2/M3/M4 等芯片；Intel 适用于 Intel 处理器的 Mac。</p></article>
+<article class="card"><div class="platform">Android</div><h2>手机和平板</h2><div class="links"><a class="primary" href="rustdesk-1.5.1-universal.apk" data-file="rustdesk-1.5.1-universal.apk" download>通用 APK（推荐）</a><a href="rustdesk-1.5.1-aarch64.apk" data-file="rustdesk-1.5.1-aarch64.apk" download>arm64 APK</a><a href="rustdesk-1.5.1-armv7.apk" data-file="rustdesk-1.5.1-armv7.apk" download>armv7 APK</a><a href="rustdesk-1.5.1-x86_64.apk" data-file="rustdesk-1.5.1-x86_64.apk" download>x86_64 APK</a></div></article>
 </section>
-<section class="install"><h2>更多 Linux 软件包</h2><div class="links"><a href="rustdesk-1.5.1-0.x86_64.rpm" download>RPM（x64）</a><a href="rustdesk-1.5.1-0.aarch64.rpm" download>RPM（arm64）</a><a href="rustdesk-1.5.1-0.x86_64-suse.rpm" download>openSUSE RPM（x64）</a><a href="rustdesk-1.5.1-0.aarch64-suse.rpm" download>openSUSE RPM（arm64）</a><a href="rustdesk-1.5.1-0-x86_64.pkg.tar.zst" download>Arch Linux（x64）</a></div></section>
+<section class="install"><h2>更多 Linux 软件包</h2><div class="links"><a href="rustdesk-1.5.1-0.x86_64.rpm" data-file="rustdesk-1.5.1-0.x86_64.rpm" download>RPM（x64）</a><a href="rustdesk-1.5.1-0.aarch64.rpm" data-file="rustdesk-1.5.1-0.aarch64.rpm" download>RPM（arm64）</a><a href="rustdesk-1.5.1-0.x86_64-suse.rpm" data-file="rustdesk-1.5.1-0.x86_64-suse.rpm" download>openSUSE RPM（x64）</a><a href="rustdesk-1.5.1-0.aarch64-suse.rpm" data-file="rustdesk-1.5.1-0.aarch64-suse.rpm" download>openSUSE RPM（arm64）</a><a href="rustdesk-1.5.1-0-x86_64.pkg.tar.zst" data-file="rustdesk-1.5.1-0-x86_64.pkg.tar.zst" download>Arch Linux（x64）</a></div></section>
 <section class="install"><h2>安装说明</h2><p class="small">Ubuntu 推荐离线 DEB，已内置键鼠控制所需依赖。Windows 未签名版本可能出现 SmartScreen 提示；macOS 未公证版本首次打开可能需要在“隐私与安全性”中允许；Android 安装时需要允许浏览器安装未知来源应用。</p><div class="code">sudo dpkg -i WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb
-sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor</div><p class="small">Ubuntu 也可使用 <code>sudo apt install -y ./文件名.deb</code> 安装。全部安装包均已内置服务器地址和公钥。</p><p><a href="SHA256SUMS" download>下载 SHA256SUMS 校验文件</a></p><p class="small note">安装后注销并重新登录一次，任务栏会刷新为新封面。</p></section>
+sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor</div><p class="small">Ubuntu 也可使用 <code>sudo apt install -y ./文件名.deb</code> 安装。全部安装包均已内置服务器地址和公钥。</p><p><a href="SHA256SUMS" data-file="SHA256SUMS" download>下载 SHA256SUMS 校验文件</a></p><p class="small note">安装后注销并重新登录一次，任务栏会刷新为新封面。</p></section>
 <footer>WKAite Remote · RustDesk 1.5.1 · 自建服务器客户端</footer>
-</main></body></html>
+</main>
+<script>
+(function () {
+  var cdnBase = "https://github.com/wkaite2/wkaite-remote/releases/download/wkaite-v1.5.1.4/";
+  var links = Array.prototype.slice.call(document.querySelectorAll("a[data-file]"));
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("button[data-source]"));
+  var status = document.getElementById("source-status");
+  var manual = false;
+  function setSource(source) {
+    links.forEach(function (link) {
+      link.href = (source === "cdn" ? cdnBase : "") + link.getAttribute("data-file");
+    });
+    buttons.forEach(function (button) {
+      var active = button.getAttribute("data-source") === source;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    status.textContent = source === "cdn" ? "已切换到 GitHub 高速线路" : "正在使用自建服务器备用线路";
+  }
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      manual = true;
+      setSource(button.getAttribute("data-source"));
+    });
+  });
+  setSource("local");
+  var settled = false;
+  if (window.fetch && window.AbortController) {
+    var controller = new AbortController();
+    var timer = setTimeout(function () { controller.abort(); }, 3500);
+    fetch(cdnBase + "SHA256SUMS", {
+      method: "HEAD", mode: "no-cors", cache: "no-store", signal: controller.signal
+    }).then(function () {
+      clearTimeout(timer);
+      if (settled || manual) return;
+      settled = true; setSource("cdn");
+    }).catch(function () {
+      clearTimeout(timer);
+      if (settled || manual) return;
+      settled = true; setSource("local");
+    });
+  }
+})();
+</script>
+</body></html>

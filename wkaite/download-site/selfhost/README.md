@@ -20,4 +20,4 @@ http://220.154.11.66:21120/WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb
 
 `TCP 21120` 已在云安全组放行。下载服务由 `wkaite-download` 和 `wkaite-download-tunnel` 两个 systemd 服务维持。
 
-`wkaite-download` 使用线程化静态文件服务，支持并发下载、`Range` 断点续传和安装包专用 MIME 类型。服务脚本位于 `deploy/wkaite_download_server.py`，systemd 覆盖配置位于 `deploy/wkaite-download.service.d/override.conf`。
+下载页会检测 GitHub Release 是否可达：可达时自动切换 GitHub CDN 高速线路，不可达时使用自建服务器备用线路。`wkaite-download` 使用线程化静态文件服务，支持并发下载、`Range` 断点续传和安装包专用 MIME 类型。服务脚本位于 `deploy/wkaite_download_server.py`，systemd 覆盖配置位于 `deploy/wkaite-download.service.d/override.conf`。

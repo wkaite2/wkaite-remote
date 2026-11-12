@@ -4,7 +4,7 @@
 
 固定下载页：**http://220.154.11.66:21120/**
 
-下载页提供 Windows（x64/ARM64）、Ubuntu/Debian（x64/arm64）、macOS（Intel/Apple Silicon）和 Android（多种架构）安装包。Ubuntu 推荐使用 `WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb`，已内置键鼠控制所需的 `libxdo.so.3`。
+下载页会自动检测 GitHub CDN：可用时使用高速线路，无法访问时使用自建服务器备用线路。提供 Windows（x64/ARM64）、Ubuntu/Debian（x64/arm64）、macOS（Intel/Apple Silicon）和 Android（多种架构）安装包。Ubuntu 推荐使用 `WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb`，已内置键鼠控制所需的 `libxdo.so.3`。
 
 基于 RustDesk `1.5.1` 固定提交 `23e5bb471a040d62f0a6ad52591fb30784265b73` 生成 WKAite Remote 跨平台安装包。
 
