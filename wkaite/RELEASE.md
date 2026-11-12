@@ -69,6 +69,7 @@ Windows 尚未配置商用 Authenticode 证书，可能出现 SmartScreen 提示
 - GitHub Actions 共 25 个 Job 全部完成，发布工作流结果为 `success`。
 - `wkaite-v1.5.1.4` 为公开正式版，共 21 个资产，官方 `SHA256SUMS` 的 20 个条目全部通过。
 - 自建下载服务器共校验 23 个文件，下载页 20 个链接全部返回 HTTP 200。
+- 下载服务已改为线程化静态服务；大文件持续下载期间，6 路并发页面请求均约 0.30 秒返回，`Range` 请求正确返回 HTTP 206。
 - Android 通用 APK 的签名证书为 `CN=WKAite Remote`，4096 位 RSA，有效期至 2054 年。
 - Ubuntu 离线包为 `1.5.1.4`，APT 依赖模拟只需安装 `rustdesk`，包内 `libxdo.so.3` 和新版封面均已确认。
 
