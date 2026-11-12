@@ -67,6 +67,20 @@ class DownloadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(self):
         self.serve(True)
 
+    def handle(self):
+        try:
+            BaseHTTPServer.BaseHTTPRequestHandler.handle(self)
+        except (IOError, OSError):
+            # Browsers may close a large transfer after the response has started.
+            self.close_connection = True
+
+    def finish(self):
+        try:
+            BaseHTTPServer.BaseHTTPRequestHandler.finish(self)
+        except (IOError, OSError):
+            # Do not log a traceback when a browser cancels a large download.
+            pass
+
     def serve(self, include_body):
         try:
             path = self.translate_path(self.path)
