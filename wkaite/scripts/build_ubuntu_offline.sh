@@ -3,7 +3,7 @@ set -euo pipefail
 
 BASE_DEB="${1:-}"
 OUTPUT="${2:-}"
-VERSION="1.5.1.3"
+VERSION="1.5.1.4"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/../.." && pwd)"
 LIBXDO_DEB="${LIBXDO_DEB:-}"
