@@ -1,54 +1,46 @@
-# WKAite Remote 1.5.1.2 正式发布
+# WKAite Remote 1.5.1.4 正式发布
 
-- 下载页：https://wkaite.github.io/wkaite-remote/
-- 发布页：https://github.com/wkaite/wkaite-remote/releases/tag/wkaite-v1.5.1.2
-- SHA256：https://github.com/wkaite/wkaite-remote/releases/download/wkaite-v1.5.1.2/SHA256SUMS
-- 源码：https://github.com/wkaite/wkaite-remote/tree/wkaite-v1.5.1.2
+- 固定下载页：http://220.154.11.66:21120/
+- GitHub 发布页：https://github.com/wkaite2/wkaite-remote/releases/tag/wkaite-v1.5.1.4
+- 源码：https://github.com/wkaite2/wkaite-remote/tree/wkaite-v1.5.1.4
+- 校验文件：http://220.154.11.66:21120/SHA256SUMS
 
 ## 安装包
 
 | 平台 | 用途 | 文件 |
 |---|---|---|
 | Windows 10/11 x64 | 推荐安装 | `rustdesk-1.5.1-x86_64.msi` |
-| Windows 10/11 x64 | 便携自解压 | `rustdesk-1.5.1-x86_64.exe` |
+| Windows 10/11 x64 | 便携 EXE | `rustdesk-1.5.1-x86_64.exe` |
 | Windows ARM64 | 推荐安装 | `rustdesk-1.5.1-aarch64.msi` |
-| Windows ARM64 | 便携自解压 | `rustdesk-1.5.1-aarch64.exe` |
-| Ubuntu 22.04 x64 | 推荐离线 DEB，含键鼠依赖 | `WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb` |
+| Windows ARM64 | 便携 EXE | `rustdesk-1.5.1-aarch64.exe` |
+| Ubuntu 22.04 x64 | 推荐离线 DEB | `WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb` |
 | Ubuntu/Debian x64 | 标准 DEB | `rustdesk-1.5.1-x86_64.deb` |
-| Ubuntu/Debian arm64 | DEB 安装 | `rustdesk-1.5.1-aarch64.deb` |
-| Linux x64 | 免安装 AppImage | `rustdesk-1.5.1-x86_64.AppImage` |
-| Linux arm64 | 免安装 AppImage | `rustdesk-1.5.1-aarch64.AppImage` |
-| macOS Intel | DMG 安装 | `rustdesk-1.5.1-x86_64.dmg` |
-| macOS Apple Silicon | DMG 安装 | `rustdesk-1.5.1-aarch64.dmg` |
+| Ubuntu/Debian arm64 | DEB | `rustdesk-1.5.1-aarch64.deb` |
+| Linux x64 | 免安装 | `rustdesk-1.5.1-x86_64.AppImage` |
+| Linux arm64 | 免安装 | `rustdesk-1.5.1-aarch64.AppImage` |
+| macOS Intel | DMG | `rustdesk-1.5.1-x86_64.dmg` |
+| macOS Apple Silicon | DMG | `rustdesk-1.5.1-aarch64.dmg` |
 | Android arm64 | 推荐 | `rustdesk-1.5.1-aarch64.apk` |
-| Android armv7 | 32 位 ARM 设备 | `rustdesk-1.5.1-armv7.apk` |
+| Android armv7 | 32 位 ARM | `rustdesk-1.5.1-armv7.apk` |
 | Android x86_64 | 模拟器/平板 | `rustdesk-1.5.1-x86_64.apk` |
 | Android 通用 | 不确定架构时 | `rustdesk-1.5.1-universal.apk` |
+| Fedora/RHEL x64 | RPM | `rustdesk-1.5.1-0.x86_64.rpm` |
+| Fedora/RHEL arm64 | RPM | `rustdesk-1.5.1-0.aarch64.rpm` |
+| openSUSE x64 | RPM | `rustdesk-1.5.1-0.x86_64-suse.rpm` |
+| openSUSE arm64 | RPM | `rustdesk-1.5.1-0.aarch64-suse.rpm` |
+| Arch Linux x64 | 软件包 | `rustdesk-1.5.1-0-x86_64.pkg.tar.zst` |
 
 ## Ubuntu 安装
 
-使用 `apt` 安装，以自动解析系统依赖：
+推荐下载离线 DEB 后安装：
 
 ```bash
-sudo apt install -y ./WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
+sudo dpkg -i WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb
+sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+sudo update-desktop-database /usr/share/applications 2>/dev/null || true
 ```
 
-离线 DEB 已包含 `libxdo.so.3`，无需访问 Ubuntu 软件源。
-
-若之前使用 `dpkg -i` 遇到 `libxdo3` 错误，执行：
-
-```bash
-sudo apt --fix-broken install -y
-```
-
-Ubuntu 22.04 的 `libxdo3` 位于 Universe 仓库。若 `apt update` 提示 `cn.archive.ubuntu.com` 无法连接，切换清华镜像后重试：
-
-```bash
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo sed -i -E 's#https?://(cn\.)?archive\.ubuntu\.com/ubuntu/?#https://mirrors.tuna.tsinghua.edu.cn/ubuntu/#g' /etc/apt/sources.list
-sudo apt update
-sudo apt --fix-broken install -y
-```
+也可以使用 `sudo apt install -y ./WKAite-Remote-1.5.1.4-ubuntu-x86_64-offline.deb`。离线包已包含 `libxdo.so.3`，不依赖 Ubuntu 软件源。
 
 ## 已锁定配置
 
@@ -60,54 +52,18 @@ ID/中继服务器: 220.154.11.66
 公钥: Bs0Kogt1I6aQfDvZFyqu3ZF7ZdRDW0evNRGO0DPX3hQ=
 ```
 
-客户端已关闭 RustDesk 公共 API 注册、服务器设置修改和自动更新，安装后直接使用自建服务器。
+客户端关闭了 RustDesk 公共 API 注册、服务器设置修改和自动更新，安装后直接连接自建服务器。
 
-## 验证结果
+## 验证重点
 
-- GitHub Actions 四平台构建全部成功。
-- Release 为公开正式版，19 个资产，无草稿或预发布标记。
-- Windows MSI、Ubuntu DEB、macOS DMG、Android APK 已重新下载并通过 SHA256 比对。
-- 已使用用户提供的封面图替换 Windows/macOS/Linux/Android 图标与下载页头图。
-- 当前 Ubuntu 主机已安装该版本，桌面入口和登录自动启动已建立，客户端 ID 为 `78265331`。
-- Ubuntu 成品运行时写入 `rendezvous_server = '220.154.11.66:21116'`，Key 已验证。
-- Android APK 中确认存在 `WKAite Remote`、`com.wkaite.remote`、服务器地址和公钥。
-- Android APK 使用固定发布密钥签名。
+- Windows、Linux、macOS、Android 由同一标签的 GitHub Actions 构建。
+- Android APK 使用固定发布密钥签名，可覆盖升级。
+- Ubuntu 离线包内置键鼠控制所需的 `libxdo.so.3`，并移除对 `libxdo3 | libxdo4` 的安装时依赖。
+- Linux 桌面入口使用新版封面绝对图标路径，避免旧 `rustdesk.svg` 覆盖。
+- 服务器 `hbbs`、`hbbr`、`wkaite-download`、`wkaite-download-tunnel` 均处于运行状态，端口 `21116/21117` 与下载页 `21120` 正常监听。
 
-Android 上传签名密钥保存在本机 `client-builder/secrets/`，不可删除；否则后续版本无法覆盖升级。
+Windows 尚未配置商用 Authenticode 证书，可能出现 SmartScreen 提示；macOS 尚未公证，首次打开可能需要在“系统设置 -> 隐私与安全性”中允许。这不影响安装和连接。
 
-Windows 当前未使用商业 Authenticode 证书，SmartScreen 可能显示未知发布者。macOS 当前为未公证 DMG，首次打开可能需要在“系统设置 -> 隐私与安全性”允许。完成证书配置后可消除对应系统提示，不需要修改客户端功能代码。
+## 凭据
 
-## 已安装主机
-
-当前 Ubuntu 主机已通过用户级安装脚本部署：
-
-- 程序：`~/.local/opt/wkaite-remote`
-- 启动器：`~/.local/bin/wkaite-remote`
-- 桌面入口：`~/桌面/WKAite Remote.desktop`
-- 登录自动启动：`~/.config/autostart/wkaite-remote.desktop`
-- 当前设备 ID：`78265331`
-- 信令服务器：`220.154.11.66:21116`
-
-## 自建服务器备用下载
-
-GitHub CDN 无法访问时，可从 RustDesk 服务器通过 SSH 下载：
-
-```bash
-cd ~/下载
-scp root@220.154.11.66:/opt/rustdesk-selfhost/downloads/WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb .
-sha256sum WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
-```
-
-SHA256：
-
-```text
-61fdccc1a82f27930744516f215cd1dd7ab728e40463dab00056b66777303876
-```
-
-安装：
-
-```bash
-sudo dpkg -i WKAite-Remote-1.5.1.3-ubuntu-x86_64-offline.deb
-sudo gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
-sudo update-desktop-database /usr/share/applications 2>/dev/null || true
-```
+Android 发布签名密钥保存在本机 `client-builder/secrets/`，服务器备份位于 `/root/wkaite-secrets/`。该密钥不可删除，否则已安装的 Android 客户端无法覆盖升级。
